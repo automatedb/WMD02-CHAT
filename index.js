@@ -1,8 +1,11 @@
 // import d'express
-var express = require('express');
+const express = require('express');
+// import mongoose
+const mongoose = require('mongoose');
 // instanciation d'express
-var app = express();
+const app = express();
 
+mongoose.createConnection('mongodb://138.197.113.194:27017/data_dev');
 // exemple méthode get
 app.get('/', function (req, res) {
     res.send('Hello World!');

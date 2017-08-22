@@ -18,6 +18,7 @@
   "homepage": "https://github.com/automatedb/WMD02-CHAT#readme",
   "dependencies": {
     "express": "^4.15.4",
+    "mongoose": "^4.11.7",
     "font-awesome": "^4.7.0",
     "winston": "^2.3.1",
     "bootstrap": "^4.0.0-alpha.6"
