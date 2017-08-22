@@ -7,24 +7,33 @@ TP de création de chat permettant de mettre en pratique :
 - Nuild automation
 
 # Mise en place du projet
-## Clone depuis github
-
-Sur le serveur depuis l'invite de commande :
-
-- Initialiser git : git init
-- Cloner depuis le serveur distant : git clone "https://github.com/automatedb/WMD02-CHAT.git"
 
 ## Installation de node.js
 
 Lien du site internet : https://nodejs.org/en/
 
+## Clone depuis github
+
+Sur le serveur depuis l'invite de commande :
+
+Cloner depuis le serveur distant : 
+
+`git clone https://github.com/automatedb/WMD02-CHAT.git`
+
 ## Initialisation du projet
 
-Dans le dossier local, depuis l'invite de commande : npm init
+Dans le dossier local, depuis l'invite de commande : 
+
+```bash
+cd WMD02-CHAT
+
+npm i
+```
 
 ## Lancement du serveur
 
-Dans le dossier local, depuis l'invite de commande : node index.js
+Dans le dossier local, depuis l'invite de commande : `node index.js`
+
 Pour quitter : Ctrl+C
 
 # Connexion à la base de données
