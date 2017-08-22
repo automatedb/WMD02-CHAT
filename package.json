@@ -1,0 +1,22 @@
+{
+  "name": "wmd02_chat",
+  "version": "1.0.0",
+  "description": "TP création d'un chat par la session WMD02 de l'imie",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/automatedb/WMD02-CHAT.git"
+  },
+  "author": "COUET Richard, GATINE Iman, DUVAL Laura et MORICET Nicolas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/automatedb/WMD02-CHAT/issues"
+  },
+  "homepage": "https://github.com/automatedb/WMD02-CHAT#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
