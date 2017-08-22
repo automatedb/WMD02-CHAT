@@ -5,6 +5,14 @@ const mongoose = require('mongoose');
 // import winston
 const winston = require('winston');
 
+// on déplace les logs dans un fichier de logs
+winston.configure({
+    transports: [
+        new (winston.transports.File)({ filename: 'app.log' })
+    ]
+});
+// test logs
+winston.info('Now my debug messages are written to console!');
 
 // instanciation d'express
 const app = express();
