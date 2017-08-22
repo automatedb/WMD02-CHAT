@@ -30,3 +30,7 @@ app.get('/', function (req, res) {
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
 });
+
+const IndexCtrl = require('./controllers/IndexCtrl');
+const indexCtrl = new IndexCtrl();
+app.get('/index', indexCtrl.index);
