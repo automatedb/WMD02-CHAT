@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/automatedb/WMD02-CHAT#readme",
   "dependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
     "express": "^4.15.4",
-    "winston": "^2.3.1",
-    "bootstrap": "^4.0.0-alpha.6"
+    "express-jwt": "^5.3.0",
+    "winston": "^2.3.1"
   }
 }
