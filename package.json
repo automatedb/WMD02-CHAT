@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js --ip localhost --port 27017 --database database_prod ",
-    "start:dev": "node index.js --ip 138.197.113.194 --port 27017 --database database_dev"
+    "start:dev": "node index.js --ip 138.197.113.194 --port 27017 --database database_dev",
+    "build:prod": "gulp prod"
   },
   "repository": {
     "type": "git",
@@ -30,7 +31,9 @@
     "winston": "^2.3.1"
   },
   "devDependencies": {
-    "gulp-concat": "^2.6.1",
-    "gulp-concat-js": "^0.1.0"
+    "gulp": "^3.9.1",
+    "gulp-batch": "^1.0.5",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-concat": "^2.6.1"
   }
 }

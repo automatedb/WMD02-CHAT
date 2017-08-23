@@ -8,6 +8,26 @@ TP de création de chat permettant de mettre en pratique :
 
 # Mise en place du projet
 
+## Build automation
+
+### prérequis
+
+Installation de gulp
+
+`npm install gulp-cli -g`
+
+Ecouter les modifications css et JS
+
+`gulp`
+
+Builder pour la mise en production
+
+`gulp prod`
+
+ou 
+
+`npm run build:prod`
+
 ## Installation de node.js
 
 Lien du site internet : https://nodejs.org/en/
