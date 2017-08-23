@@ -33,9 +33,6 @@ parser.addArgument(
 );
 // test bon fonctionnement des arguments
 let args = parser.parseArgs();
-console.dir(args);
-
-
 
 // on déplace les logs dans un fichier de logs
 winston.configure({
@@ -43,19 +40,17 @@ winston.configure({
         new (winston.transports.File)({ filename: 'app.log' })
     ]
 });
-// test logs
-winston.info('Now my debug messages are written to console!');
+
 
 // instanciation d'express
 const app = express();
 app.set("view options", { layout: false });
 app.use(express.static(__dirname + '/views'));
 
-
 // connexion à la BDD via le gramework MonGoose
-mongoose.createConnection('mongodb://138.197.113.194:27017/data_dev');
+mongoose.createConnection(`mongodb://${args.ip}:${args.port}/${args.database}`);
 
-
+winston.info('Connexion à la base de donnnées OK!');
 
 const IndexCtrl = require('./controllers/IndexCtrl');
 const indexCtrl = new IndexCtrl();
@@ -64,5 +59,5 @@ app.get('/', indexCtrl.index);
 
 // exemple méthode listen sur le port 3000
 app.listen(3000, function () {
-    console.log('Example app listening on port 3000!');
+    winston.info('Example app listening on port 3000!');
 });
