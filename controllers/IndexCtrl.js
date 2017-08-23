@@ -4,5 +4,6 @@ class IndexCtrl {
         res.render('index.html');
     }
 
+
 }
 module.exports = IndexCtrl;

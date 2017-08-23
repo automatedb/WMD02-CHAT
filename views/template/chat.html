@@ -1,21 +1,21 @@
 <div class="container">
     <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading">PRIVATE CHAT</div>
+        <div class="card">
+            <div class="card-header">PRIVATE CHAT</div>
+
             <!--COnteneur de message-->
-            <div class="panel-body message-container">
-                <!--Formulaire de message-->
-                <div class="panel-footer">
-                    <div class="panel-footer">
-                    <form class="input-group" action="/" method="post" id="formulaire_chat">
-                        <input type="text" class="form-control" name="message" id="message" placeholder="Votre message..." size="50" autofocus />
-                        <span class="input-group-btn">
-                            <input class="btn btn-default" type="submit" id="envoi_message" value="Envoyer" />
-                        </span>
-                    </form>
-                </div>
-              </div>
+            <div class="card-body message-container"></div>
+
+            <!--Formulaire de message-->
+            <div class="card-footer">
+                <form class="input-group" action="/" method="post" id="formulaire_chat">
+                    <input type="text" class="form-control" name="message" id="message" placeholder="Votre message..." size="50" autofocus />
+                    <span class="input-group-btn">
+                        <input class="btn btn-default" type="submit" id="envoi_message" value="Envoyer" />
+                    </span>
+                </form>
             </div>
+
          </div>
     </div>
 </div>
