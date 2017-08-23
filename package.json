@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js  --ip localhost --port 27017 --database database_prod ",
-    "start:dev": "node index.js  --ip 138.197.113.194 --port 27017 --database database_dev"
+    "start": "node index.js --ip localhost --port 27017 --database database_prod ",
+    "start:dev": "node index.js --ip 138.197.113.194 --port 27017 --database database_dev"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/automatedb/WMD02-CHAT#readme",
   "dependencies": {
+    "argparse": "^1.0.9",
     "bootstrap": "^4.0.0-alpha.6",
     "express": "^4.15.4",
     "font-awesome": "^4.7.0",

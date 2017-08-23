@@ -30,9 +30,15 @@ cd WMD02-CHAT
 npm i
 ```
 
-## Lancement du serveur
+## Lancement du serveur de dev
 
-Dans le dossier local, depuis l'invite de commande : `node index.js`
+Dans le dossier local, depuis l'invite de commande : `npm run start:dev`
+
+Pour quitter : Ctrl+C
+
+## Lancement du serveur de prod
+
+Dans le dossier local, depuis l'invite de commande : `npm start`
 
 Pour quitter : Ctrl+C
 
