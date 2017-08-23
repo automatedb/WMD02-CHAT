@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 // import winston
 const winston = require('winston');
 
+
 // on déplace les logs dans un fichier de logs
 winston.configure({
     transports: [
@@ -16,20 +17,17 @@ winston.info('Now my debug messages are written to console!');
 
 // instanciation d'express
 const app = express();
+app.set("view options", { layout: false });
+app.use(express.static(__dirname + '/views'));
+
 
 // connexion à la BDD via le gramework MonGoose
 mongoose.createConnection('mongodb://138.197.113.194:27017/data_dev');
 
 
-// exemple méthode get
-app.get('/', function (req, res) {
-    res.send('Hello World!');
-});
-
-
 const IndexCtrl = require('./controllers/IndexCtrl');
 const indexCtrl = new IndexCtrl();
-app.get('/index', indexCtrl.index);
+app.get('/', indexCtrl.index);
 
 
 
