@@ -4,7 +4,9 @@
   "description": "TP création d'un chat par la session WMD02 de l'imie",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js  --ip localhost --port 27017 --database database_prod ",
+    "start:dev": "node index.js  --ip 138.197.113.194 --port 27017 --database database_dev"
   },
   "repository": {
     "type": "git",
