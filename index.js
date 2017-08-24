@@ -44,7 +44,7 @@ winston.configure({
 
 // instanciation d'express
 const app = express();
-app.set("view options", { layout: false });
+//app.set("view options", { layout: false });
 app.use(express.static(__dirname + '/views'));
 
 // connexion à la BDD via le gramework MonGoose
@@ -52,9 +52,11 @@ mongoose.createConnection(`mongodb://${args.ip}:${args.port}/${args.database}`);
 
 winston.info('Connexion à la base de donnnées OK!');
 
+// affichage index
 const IndexCtrl = require('./controllers/IndexCtrl');
 const indexCtrl = new IndexCtrl();
 app.get('/', indexCtrl.index);
+
 
 
 // exemple méthode listen sur le port 3000
