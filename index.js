@@ -6,7 +6,8 @@ const mongoose = require('mongoose');
 const winston = require('winston');
 // import d'ArgParse
 const ArgumentParser = require('argparse').ArgumentParser;
-
+// body-parser nécesaire pour récupérér les POST
+const bodyParser = require('body-parser');
 
 // on instancie la classe puis récupère les arguments de la console
 const parser = new ArgumentParser({
@@ -48,21 +49,40 @@ const app = express();
 app.use(express.static(__dirname + '/views'));
 
 // connexion à la BDD via le gramework MonGoose
-mongoose.createConnection(`mongodb://${args.ip}:${args.port}/${args.database}`);
+const db = mongoose.createConnection(`mongodb://${args.ip}:${args.port}/${args.database}`);
+// lines about RegistrCtrl
+let Schema = mongoose.Schema;
+mongoose.model('Users', new Schema({ //a new schema
+    login: {}, //dynamic properties
+    pwd: []
+}, {strict: false}));
+let User = db.model('Users');
+// lines on index.js
+db.collections.users.insert({ login: loginValue, pwd: pwdValue });
+console.log(db.collections.users);
+
+
 
 winston.info('Connexion à la base de donnnées OK!');
+
+// nécessaire pour lire les post au format json
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 // affichage index
 const IndexCtrl = require('./controllers/IndexCtrl');
 const indexCtrl = new IndexCtrl();
+
+
 app.get('/', indexCtrl.index);
-
-
 // gestion données formulaire register
 const RegisterCtrl = require('./controllers/RegisterCtrl');
 const registerCtrl = new RegisterCtrl();
-app.get('/v1/users', registerCtrl.postRegister);
 
+
+
+app.post('/v1/users', registerCtrl.postRegister);
 
 
 // exemple méthode listen sur le port 3000

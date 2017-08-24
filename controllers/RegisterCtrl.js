@@ -2,10 +2,23 @@ class RegisterCtrl {
 
     postRegister(req, res) {
 
-        console.log(req.body);
+        let loginValue = req.body.login;
+        let pwdValue = req.body.pwd;
+
+        if (loginValue === "" || loginValue === undefined || pwdValue === "" || pwdValue === undefined) {
+
+            res.redirect('/');
+
+        } else {
 
 
 
+
+
+
+
+
+        }
     }
 
 }
