@@ -2,3 +2,4 @@
 node_modules
 app.log
 views/assets
+package-lock.json
