@@ -58,6 +58,12 @@ const indexCtrl = new IndexCtrl();
 app.get('/', indexCtrl.index);
 
 
+// gestion données formulaire register
+const RegisterCtrl = require('./controllers/RegisterCtrl');
+const registerCtrl = new RegisterCtrl();
+app.get('/v1/users', registerCtrl.postRegister());
+
+
 
 // exemple méthode listen sur le port 3000
 app.listen(3000, function () {
