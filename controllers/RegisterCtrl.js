@@ -1,7 +1,11 @@
 class RegisterCtrl {
 
     postRegister(req, res) {
-        res.render(console.log('beuh'));
+
+        req.body.login
+
+
+
     }
 
 }
