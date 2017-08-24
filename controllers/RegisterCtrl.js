@@ -2,7 +2,7 @@ class RegisterCtrl {
 
     postRegister(req, res) {
 
-        req.body.login
+        console.log(req.body);
 
 
 
