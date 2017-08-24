@@ -3,7 +3,7 @@
     <div class="card-body">
         <h4 class="card-title">PRIVATE CHAT</h4>
         <h6 class="card-subtitle mb-2 text-muted">Formulaire d'Enregistrement</h6>
-        <form>
+        <form id="form-register">
             <div class="form-group">
                 <label for="login">Identifiant</label>
                 <input type="text" class="form-control" id="login" name="login" aria-describedby="emailHelp"
@@ -15,8 +15,8 @@
                 <label for="pwd">Mot de Passe</label>
                 <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Mot de Passe">
             </div>
-            <a href="#" class="card-link">J'ai déjà un compte</a>
-            <button type="submit" class="btn btn-primary float-right">Submit</button>
+            <a href="#" class="card-link" id="go-to-login">J'ai déjà un compte</a>
+            <button type="submit" class="btn btn-primary float-right" id="submit-register">Submit</button>
         </form>
     </div>
 </div>
