@@ -6,6 +6,10 @@ const mongoose = require('mongoose');
 const winston = require('winston');
 // import d'ArgParse
 const ArgumentParser = require('argparse').ArgumentParser;
+// import de Body Parser nécessaire pour récupérer les données d'un formaulaire en post
+const bodyParser = require('body-parser');
+
+
 
 
 // on instancie la classe puis récupère les arguments de la console
@@ -63,3 +67,9 @@ app.get('/', indexCtrl.index);
 app.listen(3000, function () {
     winston.info('Example app listening on port 3000!');
 });
+
+
+
+// pour form POST
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
