@@ -21,9 +21,10 @@
   "homepage": "https://github.com/automatedb/WMD02-CHAT#readme",
   "dependencies": {
     "argparse": "^1.0.9",
-    "bootstrap": "^4.0.0-alpha.6",
+    "bootstrap": "^4.0.0-beta",
     "express": "^4.15.4",
     "font-awesome": "^4.7.0",
+    "gulp-sass": "^3.1.0",
     "gulp": "^3.9.1",
     "gulp-cli": "^1.4.0",
     "jquery": "^3.2.1",
