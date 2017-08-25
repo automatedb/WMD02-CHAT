@@ -48,44 +48,33 @@ const app = express();
 //app.set("view options", { layout: false });
 app.use(express.static(__dirname + '/views'));
 
+mongoose.Promise = global.Promise;
+
 // connexion à la BDD via le gramework MonGoose
-const db = mongoose.createConnection(`mongodb://${args.ip}:${args.port}/${args.database}`);
-// lines about RegistrCtrl
-let Schema = mongoose.Schema;
-mongoose.model('Users', new Schema({ //a new schema
-    login: {}, //dynamic properties
-    pwd: []
-}, {strict: false}));
-let User = db.model('Users');
-// lines on index.js
-db.collections.users.insert({ login: loginValue, pwd: pwdValue });
-console.log(db.collections.users);
+mongoose.connect(`mongodb://${args.ip}:${args.port}/${args.database}`, err => {
+    if(err) { throw new Error('Problème de connexion'); }
+
+    winston.info('Connexion à la base de donnnées OK!');
+
+    // nécessaire pour lire les post au format json
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
 
 
+    // affichage index
+    const IndexCtrl = require('./controllers/IndexCtrl');
+    const indexCtrl = new IndexCtrl();
+    app.get('/', indexCtrl.index);
 
-winston.info('Connexion à la base de donnnées OK!');
-
-// nécessaire pour lire les post au format json
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-
-// affichage index
-const IndexCtrl = require('./controllers/IndexCtrl');
-const indexCtrl = new IndexCtrl();
+    // gestion données formulaire register
+    const RegisterCtrl = require('./controllers/RegisterCtrl');
+    const registerCtrl = new RegisterCtrl();
+    app.post('/v1/users', registerCtrl.postRegister);
 
 
-app.get('/', indexCtrl.index);
-// gestion données formulaire register
-const RegisterCtrl = require('./controllers/RegisterCtrl');
-const registerCtrl = new RegisterCtrl();
-
-
-
-app.post('/v1/users', registerCtrl.postRegister);
-
-
-// exemple méthode listen sur le port 3000
-app.listen(3000, function () {
-    winston.info('Example app listening on port 3000!');
+    // exemple méthode listen sur le port 3000
+    app.listen(3000, function () {
+        winston.info('Example app listening on port 3000!');
+    });
 });
+

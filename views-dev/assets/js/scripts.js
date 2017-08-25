@@ -4,13 +4,15 @@ $('main').load('/register.html');
 
 // récupération des données POST pour envoi au controller
 $('main').on('submit', $('#submit-register'), (function (event) {
+    event.preventDefault();
+
     // vérification des champs
     let form = $('main').find('#form-register');
     let login = form.find('[name=login]').val();
     let pwd = form.find('[name=pwd]').val();
 
     if (login === "" || login === undefined || pwd === "" || pwd === undefined) {
-        event.preventDefault();
+
     } else {
         $.ajax({
             contentType: "application/json; charset=UTF-8",
@@ -20,9 +22,12 @@ $('main').on('submit', $('#submit-register'), (function (event) {
                 login: login,
                 pwd: pwd
             })
-        }).done(function (test) {
-            console.log('coucou ca marche !');
-        }).fail(function (error) {
+        })
+            .done(function(res) {
+                console.log(res);
+                console.log('coucou ca marche dans done !');
+            })
+            .fail(function (error) {
             console.log(error);
         });
         event.preventDefault();
