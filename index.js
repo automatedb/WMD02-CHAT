@@ -6,11 +6,8 @@ const mongoose = require('mongoose');
 const winston = require('winston');
 // import d'ArgParse
 const ArgumentParser = require('argparse').ArgumentParser;
-// import de Body Parser nécessaire pour récupérer les données d'un formaulaire en post
+// body-parser nécesaire pour récupérér les POST
 const bodyParser = require('body-parser');
-
-
-
 
 // on instancie la classe puis récupère les arguments de la console
 const parser = new ArgumentParser({
@@ -51,25 +48,32 @@ const app = express();
 //app.set("view options", { layout: false });
 app.use(express.static(__dirname + '/views'));
 
+mongoose.Promise = global.Promise;
+
 // connexion à la BDD via le gramework MonGoose
-mongoose.createConnection(`mongodb://${args.ip}:${args.port}/${args.database}`);
+mongoose.connect(`mongodb://${args.ip}:${args.port}/${args.database}`, err => {
+    if(err) { throw new Error('Problème de connexion'); }
 
-winston.info('Connexion à la base de donnnées OK!');
+    winston.info('Connexion à la base de donnnées OK!');
 
-// affichage index
-const IndexCtrl = require('./controllers/IndexCtrl');
-const indexCtrl = new IndexCtrl();
-app.get('/', indexCtrl.index);
-
+    // nécessaire pour lire les post au format json
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
 
 
-// exemple méthode listen sur le port 3000
-app.listen(3000, function () {
-    winston.info('Example app listening on port 3000!');
+    // affichage index
+    const IndexCtrl = require('./controllers/IndexCtrl');
+    const indexCtrl = new IndexCtrl();
+    app.get('/', indexCtrl.index);
+
+    // gestion données formulaire register
+    const RegisterCtrl = require('./controllers/RegisterCtrl');
+    const registerCtrl = new RegisterCtrl();
+    app.post('/v1/users', registerCtrl.postRegister);
+
+
+    // exemple méthode listen sur le port 3000
+    app.listen(3000, function () {
+        winston.info('Example app listening on port 3000!');
+    });
 });
-
-
-
-// pour form POST
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
