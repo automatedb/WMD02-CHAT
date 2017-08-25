@@ -17,10 +17,10 @@ $(document).ready(function() {
     $('main').load('/register.html');
 
     // récupération des données POST pour envoi au controller
-    $('main').on('submit', $('#submit-register'), (function (event) {
+    $('main').on('click', '#submit-register', (function (event) {
         event.preventDefault();
 
-        // vérification des champs
+        // // vérification des champs
         let form = $('main').find('#form-register');
         let login = form.find('[name=login]').val();
         let pwd = form.find('[name=pwd]').val();
@@ -28,7 +28,7 @@ $(document).ready(function() {
         if (login === "" || login === undefined || pwd === "" || pwd === undefined) {
 
         } else {
-            $.ajax({
+                $.ajax({
                 contentType: "application/json; charset=UTF-8",
                 method: 'POST',
                 url: "/v1/users",
