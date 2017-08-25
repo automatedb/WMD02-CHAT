@@ -62,14 +62,16 @@ const indexCtrl = new IndexCtrl();
 app.get('/', indexCtrl.index);
 
 
+// pour form POST
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const LoginCtrl = require('./controllers/LoginCtrl');
+const loginCtrl = new LoginCtrl();
+app.post('/v1/users/login', loginCtrl.postLogin.bind(loginCtrl));
+
 
 // exemple méthode listen sur le port 3000
 app.listen(3000, function () {
     winston.info('Example app listening on port 3000!');
 });
-
-
-
-// pour form POST
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
