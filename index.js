@@ -77,4 +77,3 @@ mongoose.connect(`mongodb://${args.ip}:${args.port}/${args.database}`, err => {
         winston.info('Example app listening on port 3000!');
     });
 });
-

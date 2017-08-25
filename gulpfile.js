@@ -15,7 +15,7 @@ gulp.task('scripts', function() {
     return gulp.src([
         'node_modules/jquery/dist/jquery.min.js',
         'views-dev/assets/js/scripts.js',
-        'node_modules/bootstrap/dist/js/bootstrap.min.js',
+        'node_modules/bootstrap/dist/js/bootstrap.min.js'
         //'node_modules/popper.js/dist/popper.min.js'
     ])
         .pipe(concat('libs.js'))
